@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepSeek Search</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-home">
+  <!-- 首页 -->
+  <header class="home-top">
+    <button class="settings-btn" type="button" data-open-settings>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2z"/></svg>
+      设置
+    </button>
+  </header>
+
+  <main class="home">
+    <div class="brand">
+      <img src="logo.svg" alt="" class="brand-logo">
+      <span class="brand-text">DeepSeek <b>Search</b></span>
+    </div>
+    <div class="home-form-slot"></div>
+  </main>
+
+  <!-- 结果页 -->
+  <header class="result-top">
+    <a class="mini-brand" href="./" data-go-home>
+      <img src="logo.svg" alt="">
+      <span>DeepSeek <b>Search</b></span>
+    </a>
+    <div class="result-form-slot"></div>
+    <button class="settings-btn" type="button" data-open-settings>设置</button>
+  </header>
+
+  <nav class="result-tabs">
+    <span class="tab active">网页</span>
+  </nav>
+
+  <main class="results-wrap">
+    <div class="results-main">
+      <p class="result-stat" id="stat"></p>
+      <div id="results"></div>
+      <div id="related" class="related" hidden></div>
+      <nav id="pager" class="pager"></nav>
+    </div>
+  </main>
+
+  <footer class="foot">由 DeepSeek Search API 与 deepseek-flash 驱动 · API Key 仅保存在你的浏览器本地</footer>
+
+  <!-- 搜索框（在首页与结果页之间移动） -->
+  <form id="searchForm" class="search-form" autocomplete="off" role="search">
+    <div class="search-box">
+      <input id="q" name="wd" type="text" maxlength="128" spellcheck="false" aria-label="搜索" aria-autocomplete="list" aria-controls="suggest">
+      <button type="button" class="clear-btn" id="clearBtn" aria-label="清空" hidden>×</button>
+    </div>
+    <button type="submit" class="search-btn">DeepSeek 一下</button>
+    <ul id="suggest" class="suggest" role="listbox" hidden></ul>
+  </form>
+
+  <!-- 设置弹窗 -->
+  <div id="settings" class="modal" hidden>
+    <div class="modal-mask" data-close-settings></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-head">
+        <h2 id="settingsTitle">搜索设置</h2>
+        <button type="button" class="modal-x" data-close-settings aria-label="关闭">×</button>
+      </div>
+      <p class="modal-tip" id="settingsTip" hidden></p>
+      <label class="field">
+        <span class="field-label">DeepSeek API Key</span>
+        <span class="key-row">
+          <input id="apiKey" type="password" placeholder="sk-..." spellcheck="false" autocomplete="off">
+          <button type="button" id="toggleKey" class="ghost-btn">显示</button>
+        </span>
+        <span class="field-hint">在 <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener">platform.deepseek.com</a> 创建。仅保存在本机 localStorage，直接从浏览器请求 api.deepseek.com。</span>
+      </label>
+      <label class="switch-row">
+        <span>
+          <span class="field-label">实时生成搜索候选词</span>
+          <span class="field-hint">输入时调用 deepseek-flash 生成下拉联想词与相关搜索（会产生少量 token 费用）</span>
+        </span>
+        <input id="suggestOn" type="checkbox" class="switch">
+      </label>
+      <div class="modal-foot">
+        <button type="button" class="ghost-btn" data-close-settings>取消</button>
+        <button type="button" class="primary-btn" id="saveSettings">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
