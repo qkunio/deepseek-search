@@ -210,29 +210,8 @@ body.is-result .foot { text-align: left; padding-left: 240px; background: var(--
 .field-label { display: block; font-weight: 600; margin-bottom: 6px; }
 .field-label-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
 .field-label-row .field-label { margin-bottom: 0; }
-.info-i { position: relative; display: inline-flex; color: var(--text-3); cursor: help; }
-.info-i svg { width: 15px; height: 15px; }
+.info-i { display: inline-flex; color: var(--text-3); cursor: help; }
 .info-i:hover { color: var(--brand); }
-.info-tip {
-  position: absolute; bottom: 100%; left: -8px;
-  width: 220px; padding: 8px 10px 18px;
-  color: #fff; font-size: 12px; line-height: 1.7;
-  opacity: 0; visibility: hidden; transition: opacity .15s;
-  z-index: 20; pointer-events: none;
-}
-.info-tip::before {
-  content: ""; position: absolute; inset: 0 0 10px 0;
-  border-radius: 8px;
-  background: #1f2329; z-index: -1;
-}
-.info-tip::after {
-  content: ""; position: absolute; top: calc(100% - 10px); left: 10px;
-  border: 5px solid transparent; border-top-color: #1f2329;
-}
-.info-i:hover .info-tip, .info-i:focus-within .info-tip {
-  opacity: 1; visibility: visible; pointer-events: auto;
-}
-.info-tip a { color: #9db4ff; text-decoration: underline; }
 .key-row { display: flex; gap: 8px; }
 .key-row input {
   flex: 1; min-width: 0; height: 38px; padding: 0 12px;

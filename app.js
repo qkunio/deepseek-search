@@ -75,6 +75,17 @@
     if (e.key === 'Escape' && !modal.hidden) closeSettings();
   });
 
+  if (window.tippy) {
+    tippy('#apiKeyInfo', {
+      allowHTML: true,
+      interactive: true,
+      interactiveBorder: 14,
+      placement: 'right',
+      delay: [100, 0],
+      content: '<a style="color:#9db4ff;text-decoration:underline" href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener">点击获取</a>，仅保存到本地浏览器。',
+    });
+  }
+
   /* ---------------- API ---------------- */
 
   class ApiError extends Error {
