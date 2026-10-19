@@ -227,7 +227,7 @@
       statEl.textContent = '';
       relatedEl.hidden = true;
       if (err.status === 0) {
-        resultsEl.innerHTML = `<div class="state"><b>需要先配置 DeepSeek API Key</b><br>点击右上角「设置」填入你的 API Key 后即可搜索。<br><button class="primary-btn" type="button" data-open-settings>去设置</button></div>`;
+        resultsEl.innerHTML = `<div class="state"><b>需要先配置 DeepSeek API Key</b><br>点击右上角齿轮图标，填入你的 API Key 后即可搜索。<br><button class="primary-btn" type="button" data-open-settings>去设置</button></div>`;
         $('[data-open-settings]', resultsEl).addEventListener('click', () => openSettings());
         openSettings('请先填写 DeepSeek API Key');
       } else {
@@ -272,24 +272,12 @@
       ? `<span class="ico" style="background-image:url('${esc(r.site_icon).replace(/'/g, '%27')}')"></span>`
       : `<span class="ico">${esc((site || '?').slice(0, 1).toUpperCase())}</span>`;
     const tag = r.authority >= 3 ? '<span class="tag" title="高权威来源">权威</span>' : '';
-    const summary = (r.summary || '').trim();
-    const more = summary && summary !== (r.snippet || '').trim()
-      ? `<button type="button" class="more" data-more>展开摘要</button>` : '';
     return `<div class="item">
       <h3><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${hl(r.title || url)}</a></h3>
       <p class="snippet">${date ? `<span class="date">${date}</span>` : ''}${hl(r.snippet || '')}</p>
-      ${summary ? `<div class="summary" hidden>${hl(stripMd(summary))}</div>` : ''}
-      <div class="meta">${icon}<span>${esc(site)}</span><span class="url">${esc(displayUrl(url))}</span>${tag}${more}</div>
+      <div class="meta">${icon}<span>${esc(site)}</span><span class="url">${esc(displayUrl(url))}</span>${tag}</div>
     </div>`;
   }
-
-  resultsEl.addEventListener('click', e => {
-    const btn = e.target.closest('[data-more]');
-    if (!btn) return;
-    const sum = $('.summary', btn.closest('.item'));
-    sum.hidden = !sum.hidden;
-    btn.textContent = sum.hidden ? '展开摘要' : '收起摘要';
-  });
 
   function renderPager(q, page, pages) {
     if (pages <= 1) { pagerEl.innerHTML = ''; return; }
@@ -479,10 +467,6 @@
     const t = new Date(d);
     if (isNaN(t)) return '';
     return `${t.getFullYear()}年${t.getMonth() + 1}月${t.getDate()}日`;
-  }
-
-  function stripMd(s) {
-    return s.replace(/^#{1,6}\s+/gm, '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n\s*\n+/g, '\n');
   }
 
   // 根据查询词生成高亮函数：先转义，再把关键词包进 <em>

@@ -10,9 +10,8 @@
 <body class="is-home">
   <!-- 首页 -->
   <header class="home-top">
-    <button class="settings-btn" type="button" data-open-settings>
+    <button class="settings-btn" type="button" data-open-settings aria-label="设置" title="设置">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2z"/></svg>
-      设置
     </button>
   </header>
 
@@ -31,7 +30,9 @@
       <span>DeepSeek <b>Search</b></span>
     </a>
     <div class="result-form-slot"></div>
-    <button class="settings-btn" type="button" data-open-settings>设置</button>
+    <button class="settings-btn" type="button" data-open-settings aria-label="设置" title="设置">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2z"/></svg>
+    </button>
   </header>
 
   <nav class="result-tabs">
@@ -69,18 +70,20 @@
       </div>
       <p class="modal-tip" id="settingsTip" hidden></p>
       <label class="field">
-        <span class="field-label">DeepSeek API Key</span>
+        <span class="field-label-row">
+          <span class="field-label">DeepSeek API Key</span>
+          <span class="info-i" tabindex="0" aria-label="关于 API Key">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5"/><circle cx="12" cy="7.6" r="0.6" fill="currentColor" stroke="none"/></svg>
+            <span class="info-tip" role="tooltip">点击 <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener">创建 API Key</a>，仅保存在本地浏览器。</span>
+          </span>
+        </span>
         <span class="key-row">
           <input id="apiKey" type="password" placeholder="sk-..." spellcheck="false" autocomplete="off">
           <button type="button" id="toggleKey" class="ghost-btn">显示</button>
         </span>
-        <span class="field-hint">在 <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener">platform.deepseek.com</a> 创建。仅保存在本机 localStorage，直接从浏览器请求 api.deepseek.com。</span>
       </label>
       <label class="switch-row">
-        <span>
-          <span class="field-label">实时生成搜索候选词</span>
-          <span class="field-hint">输入时调用 deepseek-flash 生成下拉联想词与相关搜索（会产生少量 token 费用）</span>
-        </span>
+        <span class="field-label">生成候选词</span>
         <input id="suggestOn" type="checkbox" class="switch">
       </label>
       <div class="modal-foot">
