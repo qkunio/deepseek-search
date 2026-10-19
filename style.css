@@ -212,6 +212,8 @@ body.is-result .foot { text-align: left; padding-left: 240px; background: var(--
 .field-label-row .field-label { margin-bottom: 0; }
 .info-i { display: inline-flex; color: var(--text-3); cursor: help; }
 .info-i:hover { color: var(--brand); }
+.get-key { font-size: 13px; font-weight: 400; }
+.get-key:hover { text-decoration: underline; }
 .key-row { display: flex; gap: 8px; }
 .key-row input {
   flex: 1; min-width: 0; height: 38px; padding: 0 12px;
