@@ -75,14 +75,6 @@
     if (e.key === 'Escape' && !modal.hidden) closeSettings();
   });
 
-  if (window.tippy) {
-    tippy('#apiKeyInfo', {
-      placement: 'top',
-      delay: [100, 0],
-      content: '仅保存到本地浏览器。',
-    });
-  }
-
   /* ---------------- API ---------------- */
 
   class ApiError extends Error {
